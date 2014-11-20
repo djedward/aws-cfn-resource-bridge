@@ -18,7 +18,8 @@
 
 import sys
 
-from setuptools import setup, find_packages
+from distutils.core import setup
+from setuptools import find_packages
 from aws.cfn import bridge
 
 name = 'aws-cfn-resource-bridge'
