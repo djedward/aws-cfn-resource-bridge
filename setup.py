@@ -71,7 +71,7 @@ try:
         'zipfile': 'library.zip',
         'console': ['bin/cfn-resource-bridge']
     }
-    _data_files = [('', ['license/win/NOTICE.txt', 'license/win/LICENSE.rtf'])]
+    _data_files = [('', ['license/win/NOTICE.txt', 'license/win/LICENSE.rtf', 'aws/cfn/bridge/vendored/botocore/vendored/requests/cacert.pem'])]
 except ImportError:
     pass
 
@@ -89,7 +89,15 @@ setup_options = dict(
         'aws',
         'aws.cfn',
         'aws.cfn.bridge',
-        'aws.cfn.bridge.vendored.botocore'
+        'aws.cfn.bridge.vendored.botocore',
+        'aws.cfn.bridge.vendored.botocore.vendored',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.charade',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.contrib',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.packages',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.packages.ssl_match_hostname',
     ],
     install_requires=dependencies,
     data_files=_data_files,
