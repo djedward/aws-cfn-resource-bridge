@@ -16,8 +16,8 @@
 from threading import Thread
 from Queue import Queue
 import logging
-import aws.cfn.bridge.vendored.botocore.session as bc_session
-from aws.cfn.bridge.resources import Message, ResourceEvent, CustomResource
+from .vendored.botocore import session as bc_session
+from .resources import Message, ResourceEvent, CustomResource
 
 log = logging.getLogger("cfn.resourcebridge")
 
