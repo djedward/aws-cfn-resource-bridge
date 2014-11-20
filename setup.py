@@ -49,7 +49,8 @@ _opts = {
 }
 _data_files = [('share/doc/%s-%s' % (name, bridge.__version__), ['NOTICE.txt', 'LICENSE']),
                ('init/redhat', ['init/redhat/cfn-resource-bridge']),
-               ('init/ubuntu', ['init/ubuntu/cfn-resource-bridge'])]
+               ('init/ubuntu', ['init/ubuntu/cfn-resource-bridge']),
+               ('aws/cfn/bridge/vendored/botocore', ['aws/cfn/bridge/vendored/botocoredata/*.json', 'aws/cfn/bridge/vendored/botocoredata/aws/*.json'])]
 
 try:
     import py2exe
