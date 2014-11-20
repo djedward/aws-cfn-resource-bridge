@@ -89,6 +89,7 @@ setup_options = dict(
         'aws',
         'aws.cfn',
         'aws.cfn.bridge',
+        'aws.cfn.bridge.vendored',
         'aws.cfn.bridge.vendored.botocore',
         'aws.cfn.bridge.vendored.botocore.vendored',
         'aws.cfn.bridge.vendored.botocore.vendored.requests',
