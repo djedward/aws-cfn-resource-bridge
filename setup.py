@@ -18,7 +18,7 @@
 
 import sys
 
-from distutils.core import setup, Distribution
+from setuptools import setup, find_packages
 from aws.cfn import bridge
 
 name = 'aws-cfn-resource-bridge'
@@ -49,8 +49,11 @@ _opts = {
 }
 _data_files = [('share/doc/%s-%s' % (name, bridge.__version__), ['NOTICE.txt', 'LICENSE']),
                ('init/redhat', ['init/redhat/cfn-resource-bridge']),
-               ('init/ubuntu', ['init/ubuntu/cfn-resource-bridge']),
-               ('aws/cfn/bridge/vendored/botocore', ['aws/cfn/bridge/vendored/botocore/data/aws/_endpoints.json', 'aws/cfn/bridge/vendored/botocore/data/aws/_retry.json'])]
+               ('init/ubuntu', ['init/ubuntu/cfn-resource-bridge'])]
+_package_data = {
+    'aws.cfn.bridge.vendored.botocore': ['data/*.json', 'data/aws/*.json'],
+    'aws.cfn.bridge.vendored.botocore.vendored.requests': ['*.pem']
+}
 
 try:
     import py2exe
@@ -86,23 +89,10 @@ setup_options = dict(
     license='Apache License 2.0',
     scripts=['bin/cfn-resource-bridge'],
     classifiers=[],
-    packages=[
-        'aws',
-        'aws.cfn',
-        'aws.cfn.bridge',
-        'aws.cfn.bridge.vendored',
-        'aws.cfn.bridge.vendored.botocore',
-        'aws.cfn.bridge.vendored.botocore.vendored',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.charade',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.contrib',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.packages',
-        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.packages.ssl_match_hostname',
-    ],
+    packages=find_packages(exclude=['tests*']),
     install_requires=dependencies,
     data_files=_data_files,
+    package_data=_package_data,
     options=_opts
 )
 
