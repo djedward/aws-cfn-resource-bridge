@@ -27,13 +27,21 @@ if sys.version_info[0] == 2 and sys.version_info[1] < 6:
         print >> sys.stderr, "Python 2.6+ is required"
         sys.exit(1)
 
-rpm_requires = ['python >= 2.6', 'python-daemon', 'python-botocore >= 0.17.0']
-dependencies = ['python-daemon>=1.5.2', 'botocore>=0.17.0']
+rpm_requires = ['python >= 2.6', 'python-daemon', 'python-six >= 1.1.0', 'python-jmespath >= 0.5.0',
+                'python-dateutil >= 2.1']
+dependencies = ['python-daemon>=1.5.2', 'six>=1.1.0', 'jmespath==0.5.0', 'python-dateutil>=2.1']
 
 if sys.version_info[:2] == (2, 6):
     # For python2.6 we have to require argparse
     rpm_requires.append('python-argparse >= 1.1')
     dependencies.append('argparse>=1.1')
+
+    ### Required for botocore. ###
+    rpm_requires.append('python-ordereddict == 1.1')
+    dependencies.append('ordereddict==1.1')
+    rpm_requires.append('python-simplejson == 3.3.0')
+    dependencies.append('simplejson==3.3.0')
+    ### End botocore dependencies ###
 
 _opts = {
     'build_scripts': {'executable': '/usr/bin/env python'},
@@ -80,7 +88,8 @@ setup_options = dict(
     packages=[
         'aws',
         'aws.cfn',
-        'aws.cfn.bridge'
+        'aws.cfn.bridge',
+        'aws.cfn.bridge.vendored.botocore'
     ],
     install_requires=dependencies,
     data_files=_data_files,
