@@ -37,10 +37,10 @@ if sys.version_info[:2] == (2, 6):
     dependencies.append('argparse>=1.1')
 
     ### Required for botocore. ###
-    rpm_requires.append('python-ordereddict == 1.1')
-    dependencies.append('ordereddict==1.1')
-    rpm_requires.append('python-simplejson == 3.3.0')
-    dependencies.append('simplejson==3.3.0')
+    rpm_requires.append('python-ordereddict >= 1.1')
+    dependencies.append('ordereddict>=1.1')
+    rpm_requires.append('python-simplejson >= 3.3.0')
+    dependencies.append('simplejson>=3.3.0')
     ### End botocore dependencies ###
 
 _opts = {
