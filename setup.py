@@ -19,7 +19,6 @@
 import sys
 
 from distutils.core import setup
-from setuptools import find_packages
 from aws.cfn import bridge
 
 name = 'aws-cfn-resource-bridge'
@@ -90,7 +89,21 @@ setup_options = dict(
     license='Apache License 2.0',
     scripts=['bin/cfn-resource-bridge'],
     classifiers=[],
-    packages=find_packages(exclude=['tests*']),
+    packages=[
+        'aws',
+        'aws.cfn',
+        'aws.cfn.bridge',
+        'aws.cfn.bridge.vendored',
+        'aws.cfn.bridge.vendored.botocore',
+        'aws.cfn.bridge.vendored.botocore.vendored',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.charade',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.contrib',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.packages',
+        'aws.cfn.bridge.vendored.botocore.vendored.requests.packages.urllib3.packages.ssl_match_hostname',
+    ],
     install_requires=dependencies,
     data_files=_data_files,
     package_data=_package_data,
