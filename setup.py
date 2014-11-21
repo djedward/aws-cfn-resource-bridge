@@ -51,7 +51,7 @@ _data_files = [('share/doc/%s-%s' % (name, bridge.__version__), ['NOTICE.txt', '
                ('init/redhat', ['init/redhat/cfn-resource-bridge']),
                ('init/ubuntu', ['init/ubuntu/cfn-resource-bridge'])]
 _package_data = {
-    'aws.cfn.bridge.vendored.botocore': ['data/*.json', 'data/aws/*.json'],
+    'aws.cfn.bridge.vendored.botocore': ['data/*.json', 'data/aws/*.json', 'data/aws/*/*.json'],
     'aws.cfn.bridge.vendored.botocore.vendored.requests': ['*.pem']
 }
 
